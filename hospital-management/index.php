@@ -2,13 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital Management</title>
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome to the Hospital Management System</h1>
-    <a href="pages/patients.php">Go to Patients Page</a><br>
-    <a href="pages/book_appointment.php">Book an Appointment</a><br>
-    <a href="pages/appointments.php">View All Appointments</a><br>
+
+    <header>
+        <div class="logo">🏥 HMS</div>
+    </header>
+
+    <main class="landing-container">
+        <h1>Welcome to the Hospital Management System</h1>
+        <p class="subtext">Easily book your appointments with available doctors in just a few clicks.</p>
+        <a href="pages/book_appointment.php" class="btn main-btn">Book an Appointment</a>
+        <a href="pages/doctors_info.php" class="btn">Know About Our Doctors</a>
+
+    </main>
+
 </body>
 </html>

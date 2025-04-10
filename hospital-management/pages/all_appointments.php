@@ -1,38 +1,55 @@
 <?php
-include '../db.php';
+include('../includes/db.php');
+$result = mysqli_query($conn, "SELECT * FROM appointments");
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>All Appointments</title>
-    <link rel="stylesheet" href="../style.css">
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #888;
+            padding: 10px;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h2>All Appointments</h2>
-    <table border="1" cellpadding="10">
+
+<h2>All Appointments</h2>
+
+<table>
+    <tr>
+        <th>Appointment ID</th>
+        <th>Patient Name</th>
+        <th>Patient ID</th>
+        <th>Doctor Name</th>
+        <th>Appointment Date</th>
+        <th>Appointment Time</th>
+        <th>Status</th>
+    </tr>
+
+    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr>
-            <th>ID</th>
-            <th>Patient ID</th>
-            <th>Doctor Name</th>
-            <th>Date</th>
-            <th>Status</th>
+            <td><?php echo $row['appointment_id']; ?></td>
+            <td><?php echo $row['patient_name']; ?></td>
+            <td><?php echo $row['patient_id']; ?></td>
+            <td><?php echo $row['doctor_name']; ?></td>
+            <td><?php echo $row['appointment_date']; ?></td>
+            <td><?php echo $row['appointment_time']; ?></td>
+            <td><?php echo $row['status']; ?></td>
         </tr>
+    <?php } ?>
+</table>
 
-        <?php
-        $sql = "SELECT * FROM appointments";
-        $result = mysqli_query($conn, $sql);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>
-                    <td>{$row['appointment_id']}</td>
-                    <td>{$row['patient_id']}</td>
-                    <td>{$row['doctor_name']}</td>
-                    <td>{$row['appointment_date']}</td>
-                    <td>{$row['status']}</td>
-                  </tr>";
-        }
-        ?>
-    </table>
 </body>
 </html>
